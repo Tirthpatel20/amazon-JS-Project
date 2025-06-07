@@ -1,4 +1,5 @@
 import {cart as dummyName} from '../data/cart.js'; 
+import {products} from '../data/products.js'
 
 let cart = [];
 
