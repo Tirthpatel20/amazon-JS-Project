@@ -98,11 +98,15 @@ cart.forEach((cartItem) => {
 document.querySelector('.js-order-summary')
   .innerHTML = cartSummaryHTML;
 
+
+
+
+
 document.querySelectorAll('.js-delete-link')
-  .forEach((link) => {
+.forEach((link) => {
     link.addEventListener('click', () => {
-      const productId = link.dataset.productId;
-      removeFromCart(productId);
+        const productId = link.dataset.productId;
+        removeFromCart(productId);
 
       const container = document.querySelector(
         `.js-cart-item-container-${productId}`
