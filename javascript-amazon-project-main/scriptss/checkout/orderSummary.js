@@ -1,7 +1,7 @@
 import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js';
-import {products} from '../../data/products.js';
+import {products, getProduct} from '../../data/products.js';
 import formatCurrency from '../utils/money.js';
-import {deliveryOptions} from '../../data/dileveryOptions.js'
+import {deliveryOptions, getDeliverOption} from '../../data/dileveryOptions.js'
 
 // import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js'
 // import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/indexjs' link not working 
@@ -20,23 +20,11 @@ export function renderOrderSummary() {
         
         const productId = cartItem.productId;
         
-        let matchingProduct;
-        
-        products.forEach((product) => {
-      if (product.id === productId) {
-          matchingProduct = product;
-        }
-    });
+        const matchingProduct = getProduct(productId);
     
     const deliveryOptionId = cartItem.deliveryOptionId;
     
-    let deliveryOption;
-    
-    deliveryOptions.forEach((deliveryOptioni) => {
-        if (deliveryOptioni.id === deliveryOptionId) {
-            deliveryOption = deliveryOptioni;
-        }
-    });
+    const deliveryOption = getDeliverOption(deliveryOptionId)
     
     const today = dayjs();
     const deliveryDate = today.add((deliveryOption.deliveryDays), 'days'
@@ -71,7 +59,7 @@ Quantity: <span class="quantity-label">${cartItem.quantity}</span>
 Update
 </span>
 <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProduct.id}">
-Delete
+Delete 
 </span>
 </div>
 </div>
