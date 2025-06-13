@@ -2,6 +2,7 @@ import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js';
 import {products, getProduct} from '../../data/products.js';
 import formatCurrency from '../utils/money.js';
 import {deliveryOptions, getDeliverOption} from '../../data/dileveryOptions.js'
+import {renderPaymentSummary} from './paymentSummary.js';
 
 // import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js'
 // import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/indexjs' link not working 
@@ -131,6 +132,8 @@ document.querySelectorAll('.js-delete-link')
             `.js-cart-item-container-${productId}`
         );
         container.remove();
+
+        renderPaymentSummary();
     });
 });
 
@@ -140,6 +143,8 @@ document.querySelectorAll('.js-delivery-option')
         const {productId, deliveryOptionId} = element.dataset;
         updateDeliveryOption(productId, deliveryOptionId);
         renderOrderSummary();
+        
+        renderPaymentSummary();        
     })
 })
 }
