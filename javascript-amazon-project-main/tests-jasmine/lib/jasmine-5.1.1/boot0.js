@@ -22,7 +22,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 /**
  This file starts the process of "booting" Jasmine. It initializes Jasmine,
- makes its globals available, and creates the env. This file should be loaded
+ makes its globals\\\ available, and creates the env. This file should be loaded
  after `jasmine.js` and `jasmine_html.js`, but before `boot1.js` or any project
  source files or spec files are loaded.
  */
